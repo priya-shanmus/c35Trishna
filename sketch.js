@@ -12,7 +12,7 @@ database = firebase.database()
     ball.shapeColor = "red";
 
 
-locOfBall = database.ref('ball/posiiton')
+locOfBall = database.ref('ball/position')
 locOfBall.on('value',readPosition)
 
 
@@ -36,8 +36,10 @@ function draw(){
 }
 
 function changePosition(x,y){
-    ball.x = ball.x + x;
-    ball.y = ball.y + y;
+   database.ref('ball/position').set({
+    x:position.x + x,
+    y:position.y + y
+   })
 }
 
 
